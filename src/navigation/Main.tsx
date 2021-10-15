@@ -1,35 +1,61 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import React, { FunctionComponent } from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { FontAwesome5 } from '@expo/vector-icons'; 
 
-import { List } from '../screens/List';
-import { TextDemo, ButtonDemo, FormDemo } from '../screens/Demos';
+import {Home} from '../pages/Home';
+import {Package} from '../pages/Package';
 
-export type MainStackParams = {
-  List: undefined;
-  TextDemo: undefined;
-  FormDemo: undefined;
-  ButtonDemo: undefined;
-};
+const Tab = createBottomTabNavigator();
 
-const MainStack = createStackNavigator<MainStackParams>();
+export interface AppProps { }
 
-export const Main = () => (
-  <MainStack.Navigator>
-    <MainStack.Screen name="List" component={List} />
-    <MainStack.Screen
-      name="TextDemo"
-      component={TextDemo}
-      options={{ headerTitle: 'Text Demo' }}
-    />
-    <MainStack.Screen
-      name="FormDemo"
-      component={FormDemo}
-      options={{ headerTitle: 'Button Demo' }}
-    />
-    <MainStack.Screen
-      name="ButtonDemo"
-      component={ButtonDemo}
-      options={{ headerTitle: 'Button Demo' }}
-    />
-  </MainStack.Navigator>
-);
+const BottomAppNavigator: FunctionComponent<AppProps> = () => {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          title: 'Início',
+          headerTitleAlign: 'center',
+          tabBarLabelStyle: {color: "#023F6C"},
+          tabBarStyle: {backgroundColor: "#FDDB00" },
+          tabBarIcon: ({ size, focused }) => {
+            if (focused == true) {
+              return (
+                <FontAwesome5 name="home" size={size} color="#023F6C" />
+              )
+            }  else {
+              return (
+                <FontAwesome5 name="home" size={size} color="#B4B4B4" />  
+              )
+            }         
+          }
+        }}
+      />
+      <Tab.Screen
+        name="MyPackages"
+        component={Package}
+        options={{
+          title: 'Minhas encomendas',
+          headerTitleAlign: 'center',
+          tabBarLabelStyle: {color: "#023F6C"},
+          tabBarStyle: {backgroundColor: "#FDDB00" },
+          tabBarIcon: ({ size, focused }) => {
+            if (focused == true) {
+              return (
+                <FontAwesome5 name="box" size={size} color="#023F6C" />
+              )
+            }  else {
+              return (
+                <FontAwesome5 name="box" size={size} color="#B4B4B4" />  
+              )
+            }    
+          }
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
+
+export default BottomAppNavigator;
