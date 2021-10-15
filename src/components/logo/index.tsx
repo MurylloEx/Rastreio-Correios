@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { Container, Banner, Message, SubMessage, BannerContainer } from './styles';
 
-export interface LogoProps { }
+export type LogoProps = { }
 
 export const Logo: FunctionComponent<LogoProps> = () => {
   return (

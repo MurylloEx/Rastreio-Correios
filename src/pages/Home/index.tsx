@@ -4,7 +4,7 @@ import { Logo } from '../../components';
 export const Home = () => {
   return (
     <Fragment>
-      <Logo/>
+      <Logo />
     </Fragment>
   )
 }

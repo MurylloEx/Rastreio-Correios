@@ -2,14 +2,14 @@ import React, { FunctionComponent } from 'react';
 import { FontAwesome5 } from '@expo/vector-icons'; 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { Home } from '../pages/Home';
-import { Package } from '../pages/Package';
+import { Home } from '../pages/home';
+import { Package } from '../pages/package';
 
 const Tab = createBottomTabNavigator();
 
 export type AppProps = { }
 
-const BottomAppNavigator: FunctionComponent<AppProps> = () => {
+export const BottomAppNavigator: FunctionComponent<AppProps> = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen
@@ -18,8 +18,12 @@ const BottomAppNavigator: FunctionComponent<AppProps> = () => {
         options={{
           title: 'Início',
           headerTitleAlign: 'center',
-          tabBarLabelStyle: {color: "#023F6C"},
-          tabBarStyle: {backgroundColor: "#FDDB00" },
+          tabBarLabelStyle: {
+            color: "#023F6C"
+          },
+          tabBarStyle: {
+            backgroundColor: "#FDDB00" 
+          },
           tabBarIcon: ({ size, focused }) => (
             <FontAwesome5 
               name="home" 
@@ -35,8 +39,12 @@ const BottomAppNavigator: FunctionComponent<AppProps> = () => {
         options={{
           title: 'Minhas encomendas',
           headerTitleAlign: 'center',
-          tabBarLabelStyle: {color: "#023F6C"},
-          tabBarStyle: {backgroundColor: "#FDDB00" },
+          tabBarLabelStyle: {
+            color: "#023F6C"
+          },
+          tabBarStyle: {
+            backgroundColor: "#FDDB00" 
+          },
           tabBarIcon: ({ size, focused }) => (
             <FontAwesome5 
               name="box" 
@@ -49,5 +57,3 @@ const BottomAppNavigator: FunctionComponent<AppProps> = () => {
     </Tab.Navigator>
   );
 }
-
-export default BottomAppNavigator;

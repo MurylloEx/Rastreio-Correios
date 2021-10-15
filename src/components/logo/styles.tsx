@@ -1,8 +1,7 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.ScrollView`
+export const Container = styled.View`
   flex: 1;
-  margin-bottom: 0;
 `;
 
 export const BannerContainer = styled.View`
@@ -19,14 +18,15 @@ export const Banner = styled.Image`
 export const Message = styled.Text`
   color: #023F6C;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 21px;
   padding: 38px;
   padding-bottom: 0;
 `;
 
 export const SubMessage = styled.Text`
   color: #023F6C;
-  font-size: 16px;
+  text-align: justify;
+  font-size: 18px;
   padding: 38px;
   padding-top: 0;
 `;
