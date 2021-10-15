@@ -9,7 +9,7 @@ export const Logo: FunctionComponent<LogoProps> = () => {
       <Banner 
         resizeMethod="resize" 
         resizeMode="contain" 
-        source={require('../../images/logo.PNG')} 
+        source={require('../../images/logo.png')}  
       />
       <Slogan>
         O encurtador mais funcional de todos!
