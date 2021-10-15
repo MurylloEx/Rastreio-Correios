@@ -11,9 +11,6 @@ export const Logo: FunctionComponent<LogoProps> = () => {
         resizeMode="contain" 
         source={require('../../images/logo.png')}  
       />
-      <Slogan>
-        O encurtador mais funcional de todos!
-      </Slogan>
     </Container>
   );
 }

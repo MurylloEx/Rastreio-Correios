@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome5 } from '@expo/vector-icons'; 
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import {Home} from '../pages/Home';
-import {Package} from '../pages/Package';
+import { Home } from '../pages/Home';
+import { Package } from '../pages/Package';
 
 const Tab = createBottomTabNavigator();
 
-export interface AppProps { }
+export type AppProps = { }
 
 const BottomAppNavigator: FunctionComponent<AppProps> = () => {
   return (
@@ -20,17 +20,13 @@ const BottomAppNavigator: FunctionComponent<AppProps> = () => {
           headerTitleAlign: 'center',
           tabBarLabelStyle: {color: "#023F6C"},
           tabBarStyle: {backgroundColor: "#FDDB00" },
-          tabBarIcon: ({ size, focused }) => {
-            if (focused == true) {
-              return (
-                <FontAwesome5 name="home" size={size} color="#023F6C" />
-              )
-            }  else {
-              return (
-                <FontAwesome5 name="home" size={size} color="#B4B4B4" />  
-              )
-            }         
-          }
+          tabBarIcon: ({ size, focused }) => (
+            <FontAwesome5 
+              name="home" 
+              size={size} 
+              color={focused ? "#023F6C" : "#B4B4B4"} 
+            />
+          )
         }}
       />
       <Tab.Screen
@@ -41,17 +37,13 @@ const BottomAppNavigator: FunctionComponent<AppProps> = () => {
           headerTitleAlign: 'center',
           tabBarLabelStyle: {color: "#023F6C"},
           tabBarStyle: {backgroundColor: "#FDDB00" },
-          tabBarIcon: ({ size, focused }) => {
-            if (focused == true) {
-              return (
-                <FontAwesome5 name="box" size={size} color="#023F6C" />
-              )
-            }  else {
-              return (
-                <FontAwesome5 name="box" size={size} color="#B4B4B4" />  
-              )
-            }    
-          }
+          tabBarIcon: ({ size, focused }) => (
+            <FontAwesome5 
+              name="box" 
+              size={size} 
+              color={focused ? "#023F6C" : "#B4B4B4"} 
+            />
+          )
         }}
       />
     </Tab.Navigator>
