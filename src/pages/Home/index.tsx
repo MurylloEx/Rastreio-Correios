@@ -1,15 +1,18 @@
 import React, { Fragment, useState} from 'react';
-import { Logo, Input, Button } from '../../components';
 import { ContainerInput, Spacer } from './styles';
-import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { Logo, Input, Button } from '../../components';
 import { useNavigation } from '@react-navigation/core';
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 export const Home = () => {
   const navigation = useNavigation();
   const [value, setValue] = useState('');
 
   function navigateToTrackingPage(){
-    navigation.navigate("Tracking", {value})
+    navigation.navigate("Tracking", {
+      screen: 'Tracking',
+      params: {value}
+    })
   }
 
   return (

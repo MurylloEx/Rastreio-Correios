@@ -13,20 +13,20 @@ export const StackAppNavigator: FunctionComponent<StackAppNavigatorProps> = () =
       <Stack.Screen 
         name="Tracking"
         component={Tracking} 
-        options={({route}) => ({
+        options={{
           headerShown: true,
-          title: route.params.value,
+          title: 'Detalhes',
           headerTitleAlign: 'center',
           headerTitleStyle: {
             color: "#023F6C"
           },
           headerStyle: {
-            backgroundColor: "#FDDB00" 
+            backgroundColor: "#FDDB00"
           },
           cardStyle: {
-            backgroundColor: "#F3F5F8" 
+            backgroundColor: "#F3F5F8"
           }
-        })}
+        }}
       />
     </Stack.Navigator>
   );
