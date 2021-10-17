@@ -16,6 +16,7 @@ export const BottomAppNavigator: FunctionComponent<AppProps> = () => {
         name="Home"
         component={Home}
         options={{
+          headerShown: false,
           title: 'Início',
           headerTitleAlign: 'center',
           tabBarLabelStyle: {
@@ -37,6 +38,7 @@ export const BottomAppNavigator: FunctionComponent<AppProps> = () => {
         name="MyPackages"
         component={Package}
         options={{
+          headerShown: false,
           title: 'Minhas encomendas',
           headerTitleAlign: 'center',
           tabBarLabelStyle: {
