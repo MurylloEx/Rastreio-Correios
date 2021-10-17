@@ -13,12 +13,12 @@ export const Input: FunctionComponent<InputProps> = ({ value, placeholder, iconC
   return (
     <Fragment>
       <Container>
-        <FontAwesome5 name="link" size={24} color="#B4B4B4" />
+        <FontAwesome5 name="link" size={24} color={iconColor || "#B4B4B4"} />
         <TextInput 
           value={value} 
           onChangeText={onChangeText} 
           placeholder={placeholder} 
-          placeholderTextColor={iconColor || "#B8B8B8"} 
+          placeholderTextColor="#B8B8B8" 
         />
       </Container>
     </Fragment>

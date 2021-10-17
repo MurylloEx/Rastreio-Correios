@@ -4,14 +4,14 @@ import { Container, Label } from "./styles";
 
 export type ButtonProps = {
   onPress: (e: GestureResponderEvent) => void,
-  label: string
+  title: string
 }
 
-export const Button: FunctionComponent<ButtonProps> = ({onPress, label}) => {
+export const Button: FunctionComponent<ButtonProps> = ({onPress, title}) => {
   return (
     <Fragment>
       <Container activeOpacity={0.7} onPress={onPress}>
-        <Label>{label}</Label>
+        <Label>{title}</Label>
       </Container>
     </Fragment>
   );
