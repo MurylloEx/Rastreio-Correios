@@ -4,11 +4,10 @@ import { ContainerInput, Spacer } from './styles';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 export const Home = () => {
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
   return (
     <Fragment>
+      <Spacer />
       <Logo />
       <ContainerInput>
         <Input placeholder="Informe o código"/>
@@ -21,7 +20,7 @@ export const Home = () => {
           iconStyle={{ borderColor: "#023F6C" }}
           onPress={(isChecked: boolean) => {}}
         />
-        <Button title="Rastrear"/>
+        <Button title="Rastrear" onPress={() => {}}/>
       </ContainerInput>       
     </Fragment>
   )
