@@ -1,9 +1,7 @@
-import React, { Fragment} from 'react';
-import { Text } from 'react-native';
-import { Logo, Input, Button } from '../../components';
+import React, { Fragment, useEffect} from 'react';
 import Timeline from 'react-native-timeline-flatlist'
 import { Spacer } from './styles';
-import { color } from 'react-native-reanimated';
+import { useNavigation, useRoute } from '@react-navigation/core';
 
 const data = [
   {time: '14/10/2021', title: 'Event 1', description: 'Event 1 Description'},
@@ -13,7 +11,16 @@ const data = [
   {time: '14/10/2021', title: 'Event 5', description: 'Event 5 Description'}
 ]
 
+
 export const Tracking = () => {
+  const navigation = useNavigation();
+  const route = useRoute();
+
+  useEffect(() => {
+    navigation.setOptions({
+      title: Object(route?.params).value
+    })
+  }, []);
 
   return (
     <Fragment>
