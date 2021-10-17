@@ -15,7 +15,7 @@ export const StackAppNavigator: FunctionComponent<StackAppNavigatorProps> = () =
         component={Tracking} 
         options={({route}) => ({
           headerShown: true,
-          title: route.params.value,
+          title: "NX400732899BR",
           headerTitleAlign: 'center',
           headerTitleStyle: {
             color: "#023F6C"
