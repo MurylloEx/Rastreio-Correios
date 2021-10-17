@@ -12,7 +12,7 @@ export const Container = styled.TouchableOpacity`
 export const TextInput = styled.TextInput`
   flex: 1;
   margin-left: 8px;
-  color: #B8B8B8;
+  color: #023F6C;
   font-size: 18px;
   padding-left: 8px;
 `;
