@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { FontAwesome5 } from '@expo/vector-icons'; 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { StackAppNavigator } from '../navigation/stack';
 
 import { Home } from '../pages/home';
 import { Package } from '../pages/package';
@@ -11,7 +12,16 @@ export type AppProps = { }
 
 export const BottomAppNavigator: FunctionComponent<AppProps> = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator 
+    screenOptions={({ route }) => ({
+      tabBarButton: [
+        "Tracking"
+      ].includes(route.name)
+        ? () => {
+            return null;
+          }
+        : undefined,
+    })}>
       <Tab.Screen
         name="Home"
         component={Home}
@@ -55,6 +65,17 @@ export const BottomAppNavigator: FunctionComponent<AppProps> = () => {
             />
           )
         }}
+      />
+      <Tab.Screen
+        name="Tracking"
+        component={StackAppNavigator}
+        options={{
+          headerShown: false,
+          tabBarStyle: {
+            backgroundColor: "#FDDB00" 
+          },
+        }}
+        
       />
     </Tab.Navigator>
   );

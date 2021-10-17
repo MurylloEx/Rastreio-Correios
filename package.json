@@ -23,6 +23,7 @@
     "react-native-reanimated": "~2.1.0",
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.0.0",
+    "react-native-timeline-flatlist": "^0.7.6",
     "react-native-web": "^0.17.5",
     "styled-components": "^5.3.1"
   },
