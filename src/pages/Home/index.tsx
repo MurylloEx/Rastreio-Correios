@@ -19,18 +19,13 @@ export const Home = () => {
   }
 
   async function onVerifyCode(){
-    try {
-      if (validateCode(value)){
-        navigateToTrackingPage();
-        onClearFields();
-      } else {
-        Alert.alert(
-          "Não achamos seu pacote.",
-          "Verifique o código de rastreio.");
-      }
-      throw new Error();
-    } catch (error) {
-      console.log(error);
+    if (validateCode(value)){
+      navigateToTrackingPage();
+      onClearFields();
+    } else {
+      Alert.alert(
+        "Não achamos seu pacote.",
+        "Verifique o código de rastreio.");
     }
   }
 
