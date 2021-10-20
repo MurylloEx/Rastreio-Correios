@@ -12,8 +12,8 @@ export const BannerContainer = styled.View`
 `;
 
 export const Banner = styled.Image`
-  max-height: 180px;
-  max-width: 80%;
+  max-height: 140px;
+  max-width: 60%;
 `;
 
 export const Message = styled.Text`
