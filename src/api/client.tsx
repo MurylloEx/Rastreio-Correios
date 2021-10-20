@@ -17,6 +17,10 @@ export type UnitData ={
   tipo: string
 } 
 
+export type ReceiverData = {
+  cep: string
+}
+
 export type EventData = {
   codigo: string,
   descricao: string,
@@ -24,7 +28,8 @@ export type EventData = {
   tipo: string,
   unidade: UnitData,
   unidadeDestino: UnitData,
-  urlIcone: string
+  urlIcone: string,
+  destinatario?: ReceiverData
 }
 
 export type PostalData = {
@@ -56,8 +61,9 @@ export type TrackData = {
 
 export async function getTrackInfo(trackCode: string){
   const response = await Client.get<TrackData>('/' + trackCode);
-  if (!!response && !!response.data){
-    return response.data;
-  }
-  return false;
+  if (!response || !response.data)
+    return false;
+  if (!response?.data?.objetos[0]?.eventos)
+    return false;
+  return response.data;
 }

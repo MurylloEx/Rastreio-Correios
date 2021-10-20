@@ -15,6 +15,8 @@ export const Input: FunctionComponent<InputProps> = ({ value, placeholder, iconC
       <Container>
         <FontAwesome5 name="link" size={24} color={iconColor || "#B4B4B4"} />
         <TextInput 
+          maxLength={13}
+          autoCapitalize="characters"
           value={value} 
           onChangeText={onChangeText} 
           placeholder={placeholder} 

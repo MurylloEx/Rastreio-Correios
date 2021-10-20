@@ -9,11 +9,11 @@ export const BannerContainer = styled.View`
   height: 40%;
   justify-content: center;
   align-items: center;
-  padding: 8px 0;
 `;
 
 export const Banner = styled.Image`
   max-height: 180px;
+  max-width: 80%;
 `;
 
 export const Message = styled.Text`

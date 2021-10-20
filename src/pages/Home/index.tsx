@@ -1,5 +1,5 @@
 import React, { Fragment, useState} from 'react';
-import { ContainerInput, Spacer } from './styles';
+import { ContainerInput, Scrollable, Spacer } from './styles';
 import { Logo, Input, Button, Render, Loading } from '../../components';
 import { useNavigation } from '@react-navigation/core';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
@@ -8,14 +8,16 @@ import { Alert } from 'react-native';
 
 export const Home = () => {
   const navigation = useNavigation();
+
   const [value, setValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   function navigateToTrackingPage(){
     navigation.navigate("Tracking", {
       screen: 'Tracking',
-      params: {value}
-    })
+      params: {value, isChecked}
+    });
   }
 
   async function onVerifyCode(){
@@ -36,26 +38,31 @@ export const Home = () => {
 
   return (
     <Fragment>
-      <Render if={!isLoading}>
-        <Spacer />
-        <Logo />
-        <ContainerInput>
-          <Input value={value} onChangeText={setValue} placeholder="Informe o código"/>
+
+      <Scrollable>
+        <Render if={!isLoading}>
           <Spacer />
-          <BouncyCheckbox
-            size={25}
-            fillColor="#023F6C"
-            text="Adicionar este código a minha lista de produtos."
-            textStyle={{ color: "#023F6C" }}
-            iconStyle={{ borderColor: "#023F6C" }}
-            onPress={(isChecked: boolean) => {}}
-          />
-          <Button title="Rastrear" onPress={onVerifyCode}/>
-        </ContainerInput>
-      </Render>
-      <Render if={isLoading}>
-        <Loading />
-      </Render>
+          <Logo />
+          <ContainerInput>
+            <Input value={value} onChangeText={setValue} placeholder="Informe o código" />
+            <Spacer />
+            <BouncyCheckbox
+              size={25}
+              fillColor="#023F6C"
+              text="Adicionar este código a minha lista de produtos."
+              textStyle={{ color: "#023F6C" }}
+              iconStyle={{ borderColor: "#023F6C" }}
+              onPress={setIsChecked}
+            />
+            <Button title="Rastrear" onPress={onVerifyCode} />
+          </ContainerInput>
+        </Render>
+
+        <Render if={isLoading}>
+          <Loading />
+        </Render>
+      </Scrollable>
+
     </Fragment>
   )
 }
