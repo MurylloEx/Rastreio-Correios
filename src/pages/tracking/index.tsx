@@ -1,13 +1,14 @@
 import moment from 'moment';
+import { Ionicons } from '@expo/vector-icons';
 import { Alert, StyleSheet } from 'react-native';
 import Timeline from 'react-native-timeline-flatlist';
 import React, { Fragment, useEffect, useState} from 'react';
 import { useIsFocused, useNavigation, useRoute } from '@react-navigation/core';
-import { Ionicons } from '@expo/vector-icons';
 
 import { Loading, Render } from '../../components';
 import { EventData, getTrackInfo } from '../../api/client';
 import { ButtonBack, ButtonLabel, Center } from './styles';
+import { saveMyPackage } from '../../services/storage';
 
 export const Tracking = () => {
   const isFocused = useIsFocused();
@@ -33,7 +34,6 @@ export const Tracking = () => {
           setIsLoading(false);
           Alert.alert("Código de rastreio inválido!", "O pacote não foi encontrado em nossa base de dados de rastreio. É possível que o código ainda não esteja disponível.");
         } else {
-          setIsLoading(false);
           let events = response.objetos[0].eventos;
           setData(events.map((e: EventData) => {
             return {
@@ -43,6 +43,10 @@ export const Tracking = () => {
               icon: 'https://proxyapp.correios.com.br' + e.urlIcone
             }
           }));
+          if (Object(route?.params).isChecked == true){
+            await saveMyPackage(response.objetos[0]);
+          }
+          setIsLoading(false);
         }
       }
     }

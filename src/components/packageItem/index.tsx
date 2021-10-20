@@ -1,8 +1,10 @@
 import React, { FunctionComponent, Fragment } from 'react';
 import { CodeRow, Container, InfoRow, Title, TrackCode } from './styles';
 import { FontAwesome5 } from '@expo/vector-icons'; 
+import { GestureResponderEvent } from 'react-native';
 
 export type PackageItemProps = {
+  onPress: (e: GestureResponderEvent) => void,
   trackCode?: string,
   title?: string,
   backgroundColor?: string,
@@ -14,7 +16,7 @@ export const PackageItem: FunctionComponent<PackageItemProps> = (props: PackageI
   const backgroundColor = !!props.backgroundColor ? props.backgroundColor : '#C3D1DC';
   return (
     <Fragment>
-      <Container activeOpacity={0.7} color={color} backgroundColor={backgroundColor}>
+      <Container activeOpacity={0.7} color={color} backgroundColor={backgroundColor} onPress={props.onPress}>
         <InfoRow>
           <FontAwesome5 name="truck" size={20} color={color} />
           <Title numberOfLines={1} color={color}>{props.title}</Title>

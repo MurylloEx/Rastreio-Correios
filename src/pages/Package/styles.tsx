@@ -8,3 +8,5 @@ export const Spacer = styled.View`
 export const ScrollableContainer = styled.ScrollView`
   height: ${Dimensions.get('window').height - 64}px;
 `;
+
+export const PackageList = styled.FlatList``;

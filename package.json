@@ -27,7 +27,8 @@
     "react-native-screens": "~3.0.0",
     "react-native-timeline-flatlist": "^0.7.6",
     "react-native-web": "^0.17.5",
-    "styled-components": "^5.3.1"
+    "styled-components": "^5.3.1",
+    "@react-native-async-storage/async-storage": "^1.13.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
