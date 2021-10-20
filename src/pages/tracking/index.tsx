@@ -7,7 +7,7 @@ import { getTrackInfo } from '../../api/client';
 import { Alert } from 'react-native';
 
 export const Tracking = () => {
-  const [data, setData] = useState([{date: '14/10/2021', title: 'CURITIBA - Objeto recebido pelos Correios do Brasil', hour: '08:00'}])
+  const [data, setData] = useState([{date: '14/10/2021', title: 'CURITIBA - Objeto recebido pelos Correios do Brasil', hour: '08:00', icon: 'https://proxyapp.correios.com.br/public-resources/img/smile.png'}])
 
   const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
@@ -36,8 +36,8 @@ export const Tracking = () => {
         <Spacer />
           <Timeline
             data={data}
+            innerCircle={'icon'}
             style={{marginLeft: 12}}
-            circleColor='#FDDB00'
             lineColor='#023F6C'
             timeStyle={{textAlign: 'center', backgroundColor:'#023F6C', color:'white', padding:5, borderRadius:13}}
             titleStyle={{color: "#023F6C"}}
