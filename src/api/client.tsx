@@ -14,7 +14,9 @@ export type AddressData = {
 
 export type UnitData ={
   endereco: AddressData,
-  tipo: string
+  tipo: string,
+  nome?: string,
+  codSro?: string
 } 
 
 export type ReceiverData = {
@@ -40,7 +42,7 @@ export type PostalData = {
 
 export type ObjectData = {
   codObjeto: string,
-  eventos: EventData,
+  eventos: EventData[],
   modalidade: string,
   tipoPostal: PostalData,
   habilitaAutoDeclaracao: boolean,

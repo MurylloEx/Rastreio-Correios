@@ -1,13 +1,18 @@
+import moment from 'moment';
+import Timeline from 'react-native-timeline-flatlist';
 import React, { Fragment, useEffect, useState} from 'react';
-import Timeline from 'react-native-timeline-flatlist'
-import { Spacer } from './styles';
-import { useNavigation, useRoute } from '@react-navigation/core';
-import { Loading, Render } from '../../components';
-import { getTrackInfo } from '../../api/client';
 import { Alert, StyleSheet } from 'react-native';
+import { Loading, Render } from '../../components';
+import { EventData, getTrackInfo } from '../../api/client';
+import { useNavigation, useRoute } from '@react-navigation/core';
 
 export const Tracking = () => {
-  const [data, setData] = useState([{date: '14/10/2021', title: 'CURITIBA - Objeto recebido pelos Correios do Brasil', hour: '08:00'}])
+  const [data, setData] = useState([{
+    time: '',
+    description: '',
+    title: '',
+    icon: ''
+  }]);
 
   const [isLoading, setIsLoading] = useState(true);
   const navigation = useNavigation();
@@ -28,7 +33,15 @@ export const Tracking = () => {
           Alert.alert("Código de rastreio inválido!", "O pacote não foi encontrado em nossa base de dados de rastreio. É possível que o código ainda não esteja disponível.");
         } else {
           setIsLoading(false);
-          console.log(response);
+          let events = response.objetos[0].eventos;
+          setData(events.map((e: EventData) => {
+            return {
+              time: moment(e.dtHrCriado).format('DD/MM/YYYY'),
+              description: (e.unidade.endereco.cidade || e.unidade.nome) + ' - ' + e.descricao,
+              title: moment(e.dtHrCriado).format('hh:mm'),
+              icon: 'https://proxyapp.correios.com.br' + e.urlIcone
+            }
+          }));
         }
       }
     }
@@ -44,11 +57,10 @@ export const Tracking = () => {
   return (
     <Fragment>
       <Render if={!isLoading}>
-        <Spacer />
         <Timeline
           data={data}
           style={styles.timeline}
-          circleColor='#FDDB00'
+          innerCircle={"icon"}
           lineColor='#023F6C'
           timeStyle={styles.time}
           titleStyle={styles.title}
@@ -65,7 +77,11 @@ export const Tracking = () => {
 }
 
 const styles = StyleSheet.create({
-  timeline: { marginLeft: 12 },
+  timeline: { 
+    paddingTop: 32,
+    marginLeft: 12,
+    marginRight: 12
+  },
   time: { 
     textAlign: 'center', 
     backgroundColor:'#023F6C', 
@@ -73,6 +89,9 @@ const styles = StyleSheet.create({
     padding:5, 
     borderRadius:13
   },
-  title: {color: "#023F6C"},
-  description: {color: "#303030"}
+  title: { color: "#023F6C" },
+  description: {
+    color: "#303030",
+    textAlign: 'justify'
+  }
 })
