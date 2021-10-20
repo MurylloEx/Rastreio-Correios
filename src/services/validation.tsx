@@ -1,4 +1,4 @@
 export function validateCode(code: string){
-  let codeObj = new RegExp(/^[A-Z]{2}\d{9}[A-Z]{2}$/i);
+  let codeObj = new RegExp(/^[A-Z]{2}[0-9A-Z]{11,13}$/i);
   return codeObj.test(code);
 }
