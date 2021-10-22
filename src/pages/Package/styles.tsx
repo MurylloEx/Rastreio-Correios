@@ -10,3 +10,16 @@ export const ScrollableContainer = styled.ScrollView`
 `;
 
 export const PackageList = styled.FlatList``;
+
+export const Center = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Message = styled.Text`
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #023F6C;
+`;

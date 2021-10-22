@@ -21,6 +21,8 @@ export const Tracking = () => {
   useEffect(() => {
     let isActive = true;
 
+    setIsLoading(true);
+
     navigation.setOptions({
       title: Object(route?.params).value
     });

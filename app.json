@@ -2,7 +2,7 @@
   "expo": {
     "name": "Rastreio Correios",
     "slug": "rastreio-correios",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -24,7 +24,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "br.com.app.rastreiocorreios"
+      "package": "br.com.app.rastreiocorreios",
+      "versionCode": 2
     },
     "web": {
       "favicon": "./assets/favicon.png"

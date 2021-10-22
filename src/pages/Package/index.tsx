@@ -4,7 +4,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { ObjectData } from '../../api/client';
 import { Loading, PackageItem, Render } from '../../components';
 import { fetchMyPackages } from '../../services/storage';
-import { PackageList, Spacer } from './styles';
+import { Center, Message, PackageList, Spacer } from './styles';
  
 export const Package = () => {
   const navigation = useNavigation();
@@ -45,38 +45,45 @@ export const Package = () => {
     <Fragment>
 
       <Render if={!isLoading}>
-        <Spacer />
-        <PackageList 
-          data={packages}
-          keyExtractor={(item) => String(Object(item)?.codObjeto)}
-          renderItem={({item}) => {
-            const colors = {
-              green: { color: '#09C047', background: '#C5EAD4' },
-              blue: { color: '#023F6C', background: '#C3D1DC' },
-              red: { color: '#EB1C00', background: '#F1C8C2' }
-            }
+        <Render if={packages.length > 0}>
+          <Spacer />
+          <PackageList 
+            data={packages}
+            keyExtractor={(item) => String(Object(item)?.codObjeto)}
+            renderItem={({item}) => {
+              const colors = {
+                green: { color: '#09C047', background: '#C5EAD4' },
+                blue:  { color: '#023F6C', background: '#C3D1DC' },
+                red:   { color: '#EB1C00', background: '#F1C8C2' }
+              }
 
-            let data = Object(item);
-            let code = data?.eventos[0]?.codigo;
-            let type = data?.eventos[0]?.tipo;
-            let color: any = colors.blue;
+              let data = Object(item);
+              let code = data?.eventos[0]?.codigo;
+              let type = data?.eventos[0]?.tipo;
+              let color: any = colors.blue;
 
-            if (['BDE', 'BDI', 'BDR'].includes(code) && (['1', '01'].includes(type)))
-              color = colors.green;
-            if (['BDE', 'BDI', 'BDR'].includes(code) && !(['1', '01'].includes(type)))
-              color = colors.green;
+              if (['BDE', 'BDI', 'BDR'].includes(code) && (['1', '01'].includes(type)))
+                color = colors.green;
+              if (['BDE', 'BDI', 'BDR'].includes(code) && !(['1', '01'].includes(type)))
+                color = colors.red;
 
-            return (
-              <PackageItem 
-                onPress={() => navigateToTrackingPage(data.codObjeto)}
-                itemColor={color?.color}
-                backgroundColor={color?.background}
-                title={data?.eventos[0]?.descricao || ''}
-                trackCode={data?.codObjeto}
-              />
-            )
-          }}
-        />
+              return (
+                <PackageItem 
+                  onPress={() => navigateToTrackingPage(data.codObjeto)}
+                  itemColor={color?.color}
+                  backgroundColor={color?.background}
+                  title={data?.eventos[0]?.descricao || ''}
+                  trackCode={data?.codObjeto}
+                />
+              )
+            }}
+          />
+        </Render>
+        <Render if={packages.length == 0}>
+          <Center>
+            <Message>Você ainda não cadastrou nenhuma encomenda no App ainda.</Message>
+          </Center>
+        </Render>
       </Render>
 
       <Render if={isLoading}>
